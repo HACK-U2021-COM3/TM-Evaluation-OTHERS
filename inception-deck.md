@@ -8,7 +8,7 @@
 
 - [時間を見積もるためのアプリだから。]
 - [T.M.Revolutionが今旬だから、ギリ夏だし。笑]
-- [Yhoo! SAY,夏が 胸をHackする だから。]
+- [Yahoo! SAY,夏が 胸をHackする だから。]
 
 <div style="page-break-before:always">
 </div>
