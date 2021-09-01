@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Ti.Me.EvaluationAPI
+  description: "APIサーバーでの値の引き渡し、静的ファイル系はフロントで完結。"
+tags:
+  - name: point
+
+paths:
+  /search:
+    get:
+      summary: 場所候補の検索
+      description: ユーザーが文字列検索をし、場所の複数候補を受け取る
+      tags:
+        - point
+      parameters:
+        - in: query
+          name: query-place
+          schema: 
+            type: string
+          description: 場所名を入力
+      responses:
+        '200':
+          description: "検索結果が1件以上の場合"
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/SearchGetResponse"
+        default:
+          description: "検索候補が0件の場合 などのエラー"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /measure:
+    get:
+      summary: 地点もとに計測
+      description: 地点もとに時間と距離を計測して返す。=> 時間と距離の計測と描画は非同期でええな。
+      tags:
+        - point
+      requestBody:
+        description: "地点の配列"
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MeasureGetRequest"
+      responses:
+        '200':
+          description: "検索結果が1件以上の場合"
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/MeasureGetResponse"
+        default:
+          description: "地点の配列が0,1件の場合などのエラー ex) 削除して検索"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+components:
+  schemas:
+    SearchGetResponse:
+      type: array
+      items: 
+        type: object
+        required:
+          - name
+          - location
+        properties:
+          name:
+            type: string
+          location:
+              type: object
+              required:
+              - lat
+              - lng
+              properties:
+                lat:
+                # 小数点
+                  type: number
+                lng:
+                  type: number
+
+    MeasureGetRequest:
+      type: array
+      items: 
+        type: object
+        required:
+          - location
+        properties:
+          location:
+              type: object
+              required:
+              - lat
+              - lng
+              properties:
+                lat:
+                # 小数点
+                  type: number
+                lng:
+                  type: number
+
+    MeasureGetResponse:
+      type: object
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
