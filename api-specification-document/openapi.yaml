@@ -93,23 +93,29 @@ components:
                 type: string
 
     MeasureGetRequest:
-      type: array
-      items: 
-        type: object
-        required:
-          - location
-        properties:
-          location:
-              type: object
-              required:
-              - lat
-              - lng
-              properties:
-                lat:
-                # 小数点
-                  type: number
-                lng:
-                  type: number
+      type: object
+      required:
+        - from
+        - to
+        - betweens
+      properties:
+        from:
+          type: string
+        to: 
+          type: string
+        betweens:
+          type: array
+          items:
+            type: object
+            required:
+              - point
+              - order
+            properties:
+              point:
+                type: string
+              order:
+                type: integer 
+
 
     MeasureGetResponse:
       type: object
