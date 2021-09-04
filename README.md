@@ -64,7 +64,7 @@
 
 ## 4\. 技術的な解決策の概要
 
-![バックエンド_アーキテクチャ図]([![Image from Gyazo](https://i.gyazo.com/00a64b9ccb6b615c4aa5d5e20cf2be18.png)](https://gyazo.com/00a64b9ccb6b615c4aa5d5e20cf2be18))
+[![アーキテクチャ図](https://i.gyazo.com/1aeb9a0796a109a42dd042699d807725.png)](https://gyazo.com/1aeb9a0796a109a42dd042699d807725)
 
 ### 採用する技術
 - クライアントサイド
