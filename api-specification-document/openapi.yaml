@@ -97,13 +97,13 @@ components:
       required:
         - from
         - to
-        - betweens
+        - waypoints
       properties:
         from:
           type: string
         to: 
           type: string
-        betweens:
+        waypoints:
           type: array
           items:
             type: object
