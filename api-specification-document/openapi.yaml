@@ -84,7 +84,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /past-plans/create:
+  /past-plans:
     post:
       summary: 測定した予定の保存
       description: 測定した予定をユーザーに紐づいた形でDBに保存する。
@@ -102,7 +102,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: "#/components/schemas/PastPlansCreatePostRequest"
+              $ref: "#/components/schemas/PastPlansPostRequest"
       responses:
         '201':
           description: "測定した予定の保存に成功した時"
@@ -113,11 +113,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  
-  /past-plans/index:
     get:
-      summary: 測定した予定の保存
-      description: 測定した予定をユーザーに紐づいた形でDBに保存する。
+      summary: 測定した予定一覧の参照
+      description: 測定した予定一覧を参照する
       tags:
         - past-plans
       parameters:
@@ -127,19 +125,13 @@ paths:
         description: "認証トークン"
         schema:
           type: string
-      requestBody:
-        description: "参照するためのユーザーID"
-        content: 
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PastPlansIndexGetRequest"
       responses:
         '200':
           description: "ユーザーIDから1件以上の過去の予定の取得に成功した時"
           content:
             application/json:    
               schema:
-                $ref: "#/components/schemas/PastPlansIndexGetResponse"
+                $ref: "#/components/schemas/PastPlansGetResponse"
         default:
           description: "0件であった場合"
           content:
@@ -148,7 +140,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
 
-  /past-plans/{plans-id}/show:
+  /past-plans/{plans-id}:
     get:
       summary: 個別の予定の詳細の表示
       description: 予定一覧から個別の予定の詳細の表示を行う
@@ -167,19 +159,13 @@ paths:
         description: ユーザーが参照する個別の過去の予定ID
         schema: 
           type: string
-      requestBody:
-        description: "参照するためのユーザーIDと指定した過去の予定のID"
-        content: 
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PastPlansShowGetRequest"
       responses:
         '200':
           description: "ユーザーIDから1件以上の過去の予定の取得に成功した時"
           content:
             application/json:    
               schema:
-                $ref: "#/components/schemas/PastPlansShowGetResponse"
+                $ref: "#/components/schemas/PastPlansIdGetResponse"
         default:
           description: "0件であった場合"
           content:
@@ -187,13 +173,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-
-
-
-  /past-plans/{plans-id}/update:
     put:
-      summary: 測定した予定の保存
-      description: 測定した予定をユーザーに紐づいた形でDBに保存する。
+      summary: 個別の予定の詳細の更新
+      description: 個別の予定の詳細の更新をユーザーに紐づいた形でDBに更新する
       tags:
         - past-plans
       parameters:
@@ -214,7 +196,7 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: "#/components/schemas/PastPlansIdUpdateRequest"
+              $ref: "#/components/schemas/PastPlansIdPutRequest"
       responses:
         '204':
           description: "データの更新に成功した時"
@@ -225,11 +207,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-
-  /past-plans/{plans-id}/delete:
     delete:
-      summary: 測定した予定の保存
-      description: 測定した予定をユーザーに紐づいた形でDBに保存する。
+      summary: 個別の予定の詳細の削除
+      description: 別の予定の詳細を削除する
       tags:
         - past-plans
       parameters:
@@ -245,12 +225,6 @@ paths:
         description: ユーザーが参照する個別の過去の予定ID
         schema: 
           type: string
-      requestBody:
-        description: "削除するためのユーザーIDと指定した過去の予定のID"
-        content: 
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PastPlansIdDeleteRequest"
       responses:
         '204':
           description: "データの削除に成功した時"
@@ -374,43 +348,78 @@ components:
                   type: string
 
 
-
-    PastPlansCreatePostRequest:
+    PastPlansPostRequest:
       type: object
       required:
+        - title
+        - sum_time
+        - details
+      properties:
+        title:
+          type: string
+        sum_time:
+          type: integer
+        details:
+          type: array
+          items:
+            type: object
+            required:
+              - place_location
+              - stay_time
+              - order_id
+            properties:
+              place_location:
+                type: object
+                required:
+                  - lat
+                  - lng
+                properties:
+                  lat:
+                    type: number
+                  lng:
+                    type: number
+              stay_time:
+                type: integer
+              order_id:
+                type: integer
     
-    PastPlansIndexGetRequest:
+    PastPlansGetResponse:
       type: object
       required:
+        - results
+      properties:
+        results:
+          type: object
+          required:
+            - id
+            - title
+            - sum_time
+            - updated_at
+          properties:
+            id:
+              type: integer
+            title:
+              type: string
+            sum_time:
+              type: integer
+            updated_at:
+              type: string
     
-    PastPlansIndexGetResponse:
-      type: object
-      required:
+    PastPlansIdGetResponse:
+      $ref: "#/components/schemas/MeasureGetResponse"
     
-    PastPlansShowGetRequest:
+    PastPlansIdPutRequest:
       type: object
       required:
-
-    PastPlansShowGetResponse:
-      type: object
-      required:
-    
-    PastPlansIdUpdateRequest:
-      type: object
-      required:
-
-    PastPlansIdDeleteRequest:
-      type: object
-      required:
+      $ref: "#/components/schemas/PastPlansPostRequest"
 
     Error:
       type: object
       required:
-        - code
-        - message
+        - error
+        - code_message
       properties:
-        code:
-          type: integer
-          format: int32
-        message:
+        error:
+          type: string
+        code_message:
           type: string
