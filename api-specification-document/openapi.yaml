@@ -5,6 +5,8 @@ info:
   description: "APIサーバーでの値の引き渡し、静的ファイル系はフロントで完結。"
 tags:
   - name: point
+  - name: user
+  - name: past-plans
 
 paths:
   /search:
@@ -58,6 +60,207 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  
+  /signup:
+    post:
+      summary: ソーシャル認証によるサインアップ
+      description: IDトークンがリクエストされ、そこから検証をしユーザーを登録して201を返す。
+      tags:
+        - user
+      parameters:
+      - in: header
+        name: id-token
+        required: true
+        description: "認証トークン"
+        schema:
+          type: string
+      responses:
+        '201':
+          description: "ユーザーのIDトークンが認証された時"
+        default:
+          description: "認証に失敗した時"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /past-plans/create:
+    post:
+      summary: 測定した予定の保存
+      description: 測定した予定をユーザーに紐づいた形でDBに保存する。
+      tags:
+        - past-plans
+      parameters:
+      - in: header
+        name: id-token
+        required: true
+        description: "認証トークン"
+        schema:
+          type: string
+      requestBody:
+        description: "過去の予定群"
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PastPlansCreatePostRequest"
+      responses:
+        '201':
+          description: "測定した予定の保存に成功した時"
+        default:
+          description: "保存に失敗した時"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  
+  /past-plans/index:
+    get:
+      summary: 測定した予定の保存
+      description: 測定した予定をユーザーに紐づいた形でDBに保存する。
+      tags:
+        - past-plans
+      parameters:
+      - in: header
+        name: id-token
+        required: true
+        description: "認証トークン"
+        schema:
+          type: string
+      requestBody:
+        description: "参照するためのユーザーID"
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PastPlansIndexGetRequest"
+      responses:
+        '200':
+          description: "ユーザーIDから1件以上の過去の予定の取得に成功した時"
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/PastPlansIndexGetResponse"
+        default:
+          description: "0件であった場合"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+  /past-plans/{plans-id}/show:
+    get:
+      summary: 個別の予定の詳細の表示
+      description: 予定一覧から個別の予定の詳細の表示を行う
+      tags:
+        - past-plans
+      parameters:
+      - in: header
+        name: id-token
+        required: true
+        description: "認証トークン"
+        schema:
+          type: string
+      - name: plans-id
+        in: path
+        required: true
+        description: ユーザーが参照する個別の過去の予定ID
+        schema: 
+          type: string
+      requestBody:
+        description: "参照するためのユーザーIDと指定した過去の予定のID"
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PastPlansShowGetRequest"
+      responses:
+        '200':
+          description: "ユーザーIDから1件以上の過去の予定の取得に成功した時"
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/PastPlansShowGetResponse"
+        default:
+          description: "0件であった場合"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+
+
+  /past-plans/{plans-id}/update:
+    put:
+      summary: 測定した予定の保存
+      description: 測定した予定をユーザーに紐づいた形でDBに保存する。
+      tags:
+        - past-plans
+      parameters:
+      - in: header
+        name: id-token
+        required: true
+        description: "認証トークン"
+        schema:
+          type: string
+      - name: plans-id
+        in: path
+        required: true
+        description: ユーザーが参照する個別の過去の予定ID
+        schema: 
+          type: string
+      requestBody:
+        description: "データの更新内容"
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PastPlansIdUpdateRequest"
+      responses:
+        '204':
+          description: "データの更新に成功した時"
+        default:
+          description: "データの更新に失敗した時"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+  /past-plans/{plans-id}/delete:
+    delete:
+      summary: 測定した予定の保存
+      description: 測定した予定をユーザーに紐づいた形でDBに保存する。
+      tags:
+        - past-plans
+      parameters:
+      - in: header
+        name: id-token
+        required: true
+        description: "認証トークン"
+        schema:
+          type: string
+      - name: plans-id
+        in: path
+        required: true
+        description: ユーザーが参照する個別の過去の予定ID
+        schema: 
+          type: string
+      requestBody:
+        description: "削除するためのユーザーIDと指定した過去の予定のID"
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PastPlansIdDeleteRequest"
+      responses:
+        '204':
+          description: "データの削除に成功した時"
+        default:
+          description: "データの削除に失敗した時"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 
 
 components:
@@ -172,6 +375,33 @@ components:
 
 
 
+    PastPlansCreatePostRequest:
+      type: object
+      required:
+    
+    PastPlansIndexGetRequest:
+      type: object
+      required:
+    
+    PastPlansIndexGetResponse:
+      type: object
+      required:
+    
+    PastPlansShowGetRequest:
+      type: object
+      required:
+
+    PastPlansShowGetResponse:
+      type: object
+      required:
+    
+    PastPlansIdUpdateRequest:
+      type: object
+      required:
+
+    PastPlansIdDeleteRequest:
+      type: object
+      required:
 
     Error:
       type: object
