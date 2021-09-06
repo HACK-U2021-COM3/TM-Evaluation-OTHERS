@@ -406,7 +406,59 @@ components:
               type: string
     
     PastPlansIdGetResponse:
-      $ref: "#/components/schemas/MeasureGetResponse"
+      type: object
+      required:
+        - results
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            required:
+              - start_location
+              - end_location
+              - start_address
+              - end_address
+              - distance
+              - duration
+              - routes_points
+            properties:
+              start_location:
+                type: object
+                required:
+                - lat
+                - lng
+                properties:
+                  lat:
+                  # 小数点
+                    type: number
+                  lng:
+                    type: number
+              end_location:
+                type: object
+                required:
+                - lat
+                - lng
+                properties:
+                  lat:
+                  # 小数点
+                    type: number
+                  lng:
+                    type: number
+              start_address:
+                type: string
+              end_address:
+                type: string
+              distance:
+                type: integer
+              duration:
+                type: integer
+              routes_points:
+                type: array
+                items:
+                  type: string
+
+      
     
     PastPlansIdPutRequest:
       type: object
