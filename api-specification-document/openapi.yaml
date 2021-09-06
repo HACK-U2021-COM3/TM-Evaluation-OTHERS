@@ -313,6 +313,7 @@ components:
               - routes_points
             properties:
               start_location:
+                description: ２点間の最初 ex) A〜Bの場合 Aの地点
                 type: object
                 required:
                 - lat
@@ -324,6 +325,7 @@ components:
                   lng:
                     type: number
               end_location:
+                description: ２点間の最後 ex) A〜Bの場合 Bの地点
                 type: object
                 required:
                 - lat
@@ -335,8 +337,10 @@ components:
                   lng:
                     type: number
               start_address:
+                description: ２点間の最初の住所 ex) A〜Bの場合 Aの地点の住所
                 type: string
               end_address:
+                description: ２点間の最初の住所 ex) A〜Bの場合 Bの地点の住所
                 type: string
               distance:
                 type: integer
@@ -418,7 +422,9 @@ components:
               - start_location
               - end_location
               - start_address
+              - start_stay_time
               - end_address
+              - end_stay_time
               - distance
               - duration
               - routes_points
@@ -447,8 +453,12 @@ components:
                     type: number
               start_address:
                 type: string
+              start_stay_time:
+                type: integer
               end_address:
                 type: string
+              end_stay_time:
+                type: integer
               distance:
                 type: integer
               duration:
