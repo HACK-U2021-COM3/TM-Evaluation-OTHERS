@@ -397,7 +397,7 @@ components:
             required:
               - place_location
               - stay_time
-              - order_id
+              - order_number
             properties:
               place_location:
                 type: object
@@ -411,7 +411,7 @@ components:
                     type: number
               stay_time:
                 type: integer
-              order_id:
+              order_number:
                 type: integer
     
     PastPlansGetResponse:
@@ -448,7 +448,7 @@ components:
             required:
               - place_location
               - stay_time
-              - order_id
+              - order_number
             properties:
               place_location:
                 type: object
@@ -462,7 +462,7 @@ components:
                     type: number
               stay_time:
                 type: integer
-              order_id:
+              order_number:
                 type: integer
       
     
