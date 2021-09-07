@@ -437,7 +437,33 @@ components:
               type: string
     
     PastPlansIdGetResponse:
-      $ref: "#/components/schemas/PastPlansPostRequest"
+      type: object
+      required:
+        - results
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            required:
+              - place_location
+              - stay_time
+              - order_id
+            properties:
+              place_location:
+                type: object
+                required:
+                  - lat
+                  - lng
+                properties:
+                  lat:
+                    type: number
+                  lng:
+                    type: number
+              stay_time:
+                type: integer
+              order_id:
+                type: integer
       
     
     PastPlansIdPutRequest:
