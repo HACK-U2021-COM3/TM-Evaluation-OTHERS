@@ -277,19 +277,38 @@ components:
         - waypoints
       properties:
         from:
-          type: string
+          type: object
+          required:
+            - from_name
+            - from_stay_time
+          properties:
+            from_name:
+              type: string
+            from_stay_time:
+              type: integer
         to: 
-          type: string
+          type: object
+          required:
+            - to_name
+            - to_stay_time
+          properties:
+            to_name:
+              type: string
+            to_stay_time:
+              type: integer
         waypoints:
           type: array
           items:
             type: object
             required:
               - point
+              - point_stay_time
               - order
             properties:
               point:
                 type: string
+              point_stay_time:
+                type: integer
               order:
                 type: integer 
 
