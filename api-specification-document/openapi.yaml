@@ -11,7 +11,7 @@ tags:
 paths:
   /search:
     get:
-      summary: 場所候補の検索
+      summary: 場所候補の検索(UIの左側の検索)
       description: ユーザーが文字列検索をし、場所の複数候補を受け取る
       tags:
         - point
@@ -37,7 +37,7 @@ paths:
 
   /measure:
     get:
-      summary: 地点もとに計測
+      summary: 地点もとに計測(UIの右側の計算)
       description: 地点もとに時間と距離を計測して返す。=> 時間と距離の計測と描画は非同期でええな。
       tags:
         - point
@@ -86,7 +86,7 @@ paths:
 
   /past-plans:
     post:
-      summary: 測定した予定の保存
+      summary: 測定した予定の保存(UIの左側を保存)
       description: 測定した予定をユーザーに紐づいた形でDBに保存する。
       tags:
         - past-plans
@@ -114,7 +114,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
     get:
-      summary: 測定した予定一覧の参照
+      summary: 測定した予定一覧の参照(UIのプロフ画面を表示)
       description: 測定した予定一覧を参照する
       tags:
         - past-plans
@@ -142,7 +142,7 @@ paths:
 
   /past-plans/{plans-id}:
     get:
-      summary: 個別の予定の詳細の表示
+      summary: 個別の予定の詳細の表示(UIの左側を表示)
       description: 予定一覧から個別の予定の詳細の表示を行う
       tags:
         - past-plans
@@ -174,7 +174,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
     put:
-      summary: 個別の予定の詳細の更新
+      summary: 個別の予定の詳細の更新(UIの左側を更新する形で保存)
       description: 個別の予定の詳細の更新をユーザーに紐づいた形でDBに更新する
       tags:
         - past-plans
@@ -306,6 +306,8 @@ components:
             required:
               - start_location
               - end_location
+              - start_stay_time
+              - end_stay_time
               - start_address
               - end_address
               - distance
@@ -336,6 +338,12 @@ components:
                     type: number
                   lng:
                     type: number
+              start_stay_time:
+                description: //追加点　出発前に居た時間 = 待機時間
+                type: number
+              end_stay_time:
+                description: //追加点　ついた状態なので0分　この値はなくてもい
+                type: number
               start_address:
                 description: ２点間の最初の住所 ex) A〜Bの場合 Aの地点の住所
                 type: string
@@ -410,69 +418,10 @@ components:
               type: string
     
     PastPlansIdGetResponse:
-      type: object
-      required:
-        - results
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            required:
-              - start_location
-              - end_location
-              - start_address
-              - start_stay_time
-              - end_address
-              - end_stay_time
-              - distance
-              - duration
-              - routes_points
-            properties:
-              start_location:
-                type: object
-                required:
-                - lat
-                - lng
-                properties:
-                  lat:
-                  # 小数点
-                    type: number
-                  lng:
-                    type: number
-              end_location:
-                type: object
-                required:
-                - lat
-                - lng
-                properties:
-                  lat:
-                  # 小数点
-                    type: number
-                  lng:
-                    type: number
-              start_address:
-                type: string
-              start_stay_time:
-                type: integer
-              end_address:
-                type: string
-              end_stay_time:
-                type: integer
-              distance:
-                type: integer
-              duration:
-                type: integer
-              routes_points:
-                type: array
-                items:
-                  type: string
-
+      $ref: "#/components/schemas/PastPlansPostRequest"
       
     
     PastPlansIdPutRequest:
-      type: object
-      required:
       $ref: "#/components/schemas/PastPlansPostRequest"
 
     Error:
