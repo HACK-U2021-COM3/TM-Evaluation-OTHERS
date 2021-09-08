@@ -1,5 +1,8 @@
 # インセプションデッキ
 
+## 当日スライド
+- https://www.canva.com/design/DAEpafhpR88/view?utm_content=DAEpafhpR88&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+
 ## プロジェクトの名前
 
 [Ti.Me.Evaluation]
@@ -7,7 +10,7 @@
 ### 名前をつけた理由
 
 - [時間を見積もるためのアプリだから。]
-- [T.M.Revolutionが今旬だから、ギリ夏だし。笑]
+- [T.M.Revolutionが季節に合ってるから、ギリ夏だし。笑]
 - [Yahoo! SAY,夏が 胸をHackする だから。]
 
 <div style="page-break-before:always">
@@ -16,8 +19,8 @@
 ---
 ## 1\. 我われはなぜここにいるのか？
 
-1. [技術的挑戦(Next.js)]
-2. [RailsでOOP意識して開発したい(あと女の子とデートするときに使いたい。笑)]
+1. [技術的挑戦]
+2. [RailsでOOP意識して開発したい]
 3. [将来に繋がるモノを作りたい・使いたい]
 
 
@@ -47,7 +50,6 @@
 [Ti.Me.Evaluation]
 
 [![Image from Gyazo](https://i.gyazo.com/b1f4cc9b1b4e578df3d07849b4494f64.jpg)](https://gyazo.com/b1f4cc9b1b4e578df3d07849b4494f64)
-- [画像URL](https://pixabay.com/photos/couple-holding-hands-walking-love-1210023/#content)
 
 ### 最高のキャッチコピー
 
@@ -66,21 +68,23 @@
 
 [![アーキテクチャ図](https://i.gyazo.com/1aeb9a0796a109a42dd042699d807725.png)](https://gyazo.com/1aeb9a0796a109a42dd042699d807725)
 
+[![Image from Gyazo](https://i.gyazo.com/5c7fc5e8a64668d5e595a7f05d440618.png)](https://gyazo.com/5c7fc5e8a64668d5e595a7f05d440618)
+
 ### 採用する技術
 - クライアントサイド
-    - ホスティングサービス: vercel
-    - 言語(FW): Next.js
+    - ホスティングサービス: netlify
+    - 言語(FW): React
     - CSS FW: chakra UI
 - サーバーサイド
     - webサーバー: puma web server
     - appサーバー:
         - 言語(FW): Ruby on Rails
         - 外部サーバー: GoogleMapApi
-        - 認証基盤: ruby-jwt, ソーシャル認証(Auth0)
+        - 認証基盤: 0Auth2.0
     - dbサーバー: postgresql
 - インフラ: heroku
 - そのほか
-    - CI: github action 
+    - CI: GithubActions 
         - RSpec
         - Rubocop
     - プロジェクト管理: GithubProjects, Notion
@@ -88,7 +92,6 @@
     - UML: draw.io
     - ERD: DrawSQL
     - api設計: swagger
-    - アーキテクチャ: MVC
 
 <div style="page-break-before:always">
 </div>
