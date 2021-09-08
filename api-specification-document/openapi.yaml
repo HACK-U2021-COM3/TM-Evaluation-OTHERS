@@ -60,29 +60,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  
-  /signup:
-    post:
-      summary: ソーシャル認証によるサインアップ
-      description: IDトークンがリクエストされ、そこから検証をしユーザーを登録して201を返す。
-      tags:
-        - user
-      parameters:
-      - in: header
-        name: id-token
-        required: true
-        description: "認証トークン"
-        schema:
-          type: string
-      responses:
-        '201':
-          description: "ユーザーのIDトークンが認証された時"
-        default:
-          description: "認証に失敗した時"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
 
   /past-plans:
     post:

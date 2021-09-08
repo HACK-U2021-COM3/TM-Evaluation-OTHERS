@@ -66,8 +66,7 @@
 
 ## 4\. 技術的な解決策の概要
 
-[![アーキテクチャ図](https://i.gyazo.com/1aeb9a0796a109a42dd042699d807725.png)](https://gyazo.com/1aeb9a0796a109a42dd042699d807725)
-
+### 技術構成
 [![Image from Gyazo](https://i.gyazo.com/5c7fc5e8a64668d5e595a7f05d440618.png)](https://gyazo.com/5c7fc5e8a64668d5e595a7f05d440618)
 
 ### 採用する技術
@@ -96,23 +95,38 @@
 <div style="page-break-before:always">
 </div>
 
-## 5\. 夜も眠れなくなるような問題は何だろう？
 
-- [フロントとバックエンドの通信ができるかどうか]
-- [GoogleMapAPIの機能で直線ではなくルート案内での距離で出せるか]
+## 5\.開発工程
+1. プロダクトバックログ(ユーザーストーリー)を作成し簡単な見積もりを行う
+2. プロダクトバックログ内でイメージしづらい処理はアクティビティ図をかく
+3. 画面遷移図をかく
+4. 機能設計書をかく
+5. ERDをかく
+6. API仕様書をかく
+7. アーキテクチャ図をかく
+8. かんばん方式によるタスク管理
 
-<div style="page-break-before:always">
-</div>
 
+### 1. プロダクトバックログ(ユーザーストーリー)を作成し簡単な見積もりを行う
+[![Image from Gyazo](https://i.gyazo.com/42be80b1d87530159bcae994cb7f5834.png)](https://gyazo.com/42be80b1d87530159bcae994cb7f5834) 
 
-<div style="page-break-before:always">
-</div>
+### 2. プロダクトバックログ内でイメージしづらい処理はアクティビティ図をかく
+[![Image from Gyazo](https://i.gyazo.com/ee193f31289520f7a580bace82c5abae.png)](https://gyazo.com/ee193f31289520f7a580bace82c5abae)
 
+### 3. 画面遷移図をかく
+[![Image from Gyazo](https://i.gyazo.com/a9ebdb3738d69752bf9e95f6a4a05f76.png)](https://gyazo.com/a9ebdb3738d69752bf9e95f6a4a05f76)
 
-## 6\. 何がどれだけ必要なのか
+### 4. 機能設計書をかく
+[![Image from Gyazo](https://i.gyazo.com/70dd000a5f951e76ee3afe92ce5b190a.png)](https://gyazo.com/70dd000a5f951e76ee3afe92ce5b190a)
 
-要素 | 値
---- | -----
-人数 | 3名
-期間 | 10日
-予算 | $5
+### 5. ERDをかく
+[![Image from Gyazo](https://i.gyazo.com/fe27d4f7c026a7c92fa9b2d9a352ec23.png)](https://gyazo.com/fe27d4f7c026a7c92fa9b2d9a352ec23)
+
+### 6. API仕様書をかく
+[![Image from Gyazo](https://i.gyazo.com/07a0af426c054089ad1c71b23016fdcf.png)](https://gyazo.com/07a0af426c054089ad1c71b23016fdcf)
+
+### 7. アーキテクチャ図をかく
+[![アーキテクチャ図](https://i.gyazo.com/1aeb9a0796a109a42dd042699d807725.png)](https://gyazo.com/1aeb9a0796a109a42dd042699d807725)
+
+### 8. かんばん方式によるタスク管理
+[![Image from Gyazo](https://i.gyazo.com/366f68b6fc4851ce6246e8a56eee5582.png)](https://gyazo.com/366f68b6fc4851ce6246e8a56eee5582)
