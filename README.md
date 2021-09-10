@@ -11,7 +11,7 @@
 
 - [時間を見積もるためのアプリだから。]
 - [T.M.Revolutionが季節に合ってるから、ギリ夏だし。笑]
-- [Yahoo! SAY,夏が 胸をHackする だから。]
+- [Yahoo! SAY,夏が 胸をHack-Uする だから。]
 
 <div style="page-break-before:always">
 </div>
@@ -39,7 +39,7 @@
 - [Ti.Me.Evaluation]というプロダクトは、
 - [経路のプランを見積もるアプリ]です。
 - これは[徒歩での各地点ごとの移動時間が計測や、そこでの滞在時間を含めた合計時間の計算をすること]ができ、
-- [ヤフー案内やGoogleMap]とは違って、
+- [ヤフー乗換案内やGoogleMap]とは違って、
 - [徒歩に限定した予定の見積もりや移動時間を可視化する機能]が備わっています。
 
 <div style="page-break-before:always">
