@@ -67,11 +67,11 @@
 ## 4\. 技術的な解決策の概要
 
 ### 技術構成
-[![Image from Gyazo](https://i.gyazo.com/5c7fc5e8a64668d5e595a7f05d440618.png)](https://gyazo.com/5c7fc5e8a64668d5e595a7f05d440618)
+[![Image from Gyazo](https://i.gyazo.com/d2ba184026dc30958c8078943c32a1e5.png)](https://gyazo.com/d2ba184026dc30958c8078943c32a1e5)
 
 ### 採用する技術
 - クライアントサイド
-    - ホスティングサービス: netlify
+    - ホスティングサービス: Firebase
     - 言語(FW): React
     - CSS FW: chakra UI
 - サーバーサイド
